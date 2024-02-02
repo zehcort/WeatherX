@@ -8,7 +8,7 @@ data class CurrentWeather(
     @Json(name = "coord")
     val coordinates: Coordinates? = null,
     @Json(name = "weather")
-    val weather: ArrayList<Weather> = arrayListOf(),
+    val weather: List<Weather> = listOf(),
     @Json(name = "base")
     val base: String? = null,
     @Json(name = "main")
