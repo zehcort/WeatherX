@@ -1,4 +1,4 @@
-package com.zehcort.data.dtos
+package com.zehcort.data.dtos.remote
 
 import com.zehcort.data.datasources.remote.api.ow.Constants
 import com.zehcort.data.entities.remote.ow.CurrentWeather as CurrentWeatherEntity
