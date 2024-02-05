@@ -8,8 +8,8 @@ import com.zehcort.data.entities.local.CurrentWeather
 @Dao
 interface CurrentWeatherDao {
     @Insert
-    fun saveRecord(currentWeather: CurrentWeather)
+    suspend fun saveRecord(currentWeather: CurrentWeather)
 
     @Query("SELECT * FROM currentweather ORDER BY id DESC LIMIT 1")
-    fun getLastRecord(): CurrentWeather?
+    suspend fun getLastRecord(): CurrentWeather?
 }

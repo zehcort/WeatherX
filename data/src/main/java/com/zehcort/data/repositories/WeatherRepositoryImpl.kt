@@ -14,8 +14,7 @@ class WeatherRepositoryImpl @Inject constructor(
     private val currentWeatherDao: CurrentWeatherDao
 ) : WeatherRepository {
     override suspend fun getCurrentWeather(latitude: Double, longitude: Double): CurrentWeather {
-        return owWeatherApi.getCurrentWeather(latitude = latitude, longitude = longitude).toDomain()
-/*        val localData = currentWeatherDao.getLastRecord()
+        val localData = currentWeatherDao.getLastRecord()
 
         return if (localData == null) {
             val remoteResponse = owWeatherApi.getCurrentWeather(latitude = latitude, longitude = longitude)
@@ -26,6 +25,6 @@ class WeatherRepositoryImpl @Inject constructor(
             remoteResponse
         } else {
             localData.toDomain()
-        }*/
+        }
     }
 }
