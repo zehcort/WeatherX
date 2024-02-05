@@ -4,8 +4,9 @@ import com.zehcort.data.datasources.local.daos.CurrentWeatherDao
 import com.zehcort.data.datasources.remote.api.ow.WeatherApi
 import com.zehcort.data.dtos.local.toDomain
 import com.zehcort.data.dtos.local.toLocalEntity
-import com.zehcort.data.dtos.remote.toDomain
+import com.zehcort.data.dtos.remote.ow.toDomain
 import com.zehcort.domain.models.CurrentWeather
+import com.zehcort.domain.models.Forecast
 import com.zehcort.domain.repositories.WeatherRepository
 import javax.inject.Inject
 
@@ -27,4 +28,7 @@ class WeatherRepositoryImpl @Inject constructor(
             localData.toDomain()
         }
     }
+
+    override suspend fun getForecast(latitude: Double, longitude: Double): Forecast =
+        owWeatherApi.getForecast(latitude = latitude, longitude = longitude).toDomain()
 }

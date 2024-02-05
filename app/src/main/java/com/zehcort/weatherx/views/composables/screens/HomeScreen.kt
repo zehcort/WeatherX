@@ -21,11 +21,11 @@ import com.zehcort.weatherx.views.composables.components.LoadingIndicator
 fun HomeScreen(
     viewModel: WeatherViewModel = hiltViewModel()
 ) {
-    val state = viewModel.state.value
+    val state = viewModel.homeUiState.value
     val errorMessage = state.errorMessage
 
     if (state.isLoading) {
-        Text(text = "Loading...")
+        LoadingIndicator()
     } else {
         if (errorMessage.isNullOrEmpty()) {
             state.currentWeather?.let { currentWeather ->

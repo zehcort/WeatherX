@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class CurrentWeather(
     @Json(name = "coord")
-    val coordinates: Coordinates? = null,
+    val coord: Coord? = null,
     @Json(name = "weather")
     val weather: List<Weather> = listOf(),
     @Json(name = "base")
@@ -22,23 +22,23 @@ data class CurrentWeather(
     @Json(name = "dt")
     val dt: Int? = null,
     @Json(name = "sys")
-    val system: System? = null,
+    val sys: Sys? = null,
     @Json(name = "timezone")
     val timezone: Int? = null,
     @Json(name = "id")
     val id: Int? = null,
     @Json(name = "name")
-    val cityName: String? = null,
+    val name: String? = null,
     @Json(name = "cod")
     val cod: Int? = null
 )
 
 @JsonClass(generateAdapter = true)
-data class Coordinates(
+data class Coord(
     @Json(name = "lon")
-    val longitude: Double? = null,
+    val lon: Double? = null,
     @Json(name = "lat")
-    val latitude: Double? = null
+    val lat: Double? = null
 )
 
 @JsonClass(generateAdapter = true)
@@ -56,25 +56,25 @@ data class Weather(
 @JsonClass(generateAdapter = true)
 data class Main(
     @Json(name = "temp")
-    var temperature: Float? = null,
+    val temp: Float? = null,
     @Json(name = "feels_like")
-    var feelsLike: Float? = null,
+    val feelsLike: Float? = null,
     @Json(name = "temp_min")
-    var tempMin: Float? = null,
+    val tempMin: Float? = null,
     @Json(name = "temp_max")
-    var tempMax: Float? = null,
+    val tempMax: Float? = null,
     @Json(name = "pressure")
-    var pressure: Int? = null,
+    val pressure: Int? = null,
     @Json(name = "humidity")
-    var humidity: Int? = null
+    val humidity: Int? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class Wind(
     @Json(name = "speed")
-    var speed: Float? = null,
+    val speed: Float? = null,
     @Json(name = "deg")
-    var deg: Int? = null
+    val deg: Int? = null
 )
 
 @JsonClass(generateAdapter = true)
@@ -84,15 +84,15 @@ data class Clouds(
 )
 
 @JsonClass(generateAdapter = true)
-data class System(
+data class Sys(
     @Json(name = "type")
-    var type: Int? = null,
+    val type: Int? = null,
     @Json(name = "id")
-    var id: Int? = null,
+    val id: Int? = null,
     @Json(name = "country")
-    var country: String? = null,
+    val country: String? = null,
     @Json(name = "sunrise")
-    var sunrise: Int? = null,
+    val sunrise: Int? = null,
     @Json(name = "sunset")
-    var sunset: Int? = null
+    val sunset: Int? = null
 )
