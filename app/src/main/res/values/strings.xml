@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">WeatherX</string>
     <string name="today_title">Today</string>
-    <string name="forecast_title">Today</string>
+    <string name="forecast_title">Forecast</string>
 </resources>

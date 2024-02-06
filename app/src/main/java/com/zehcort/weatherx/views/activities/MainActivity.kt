@@ -1,4 +1,4 @@
-package com.zehcort.weatherx
+package com.zehcort.weatherx.views.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

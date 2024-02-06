@@ -17,6 +17,7 @@ data class Forecast(
     val city: City? = null
 )
 
+@JsonClass(generateAdapter = true)
 data class ForecastWeather(
     @Json(name = "dt")
     val dt: Int? = null,
