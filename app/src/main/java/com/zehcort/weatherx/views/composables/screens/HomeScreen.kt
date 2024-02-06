@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.zehcort.domain.models.CurrentWeather
+import com.zehcort.weatherx.permissions.LocationPermissionHandler
 import com.zehcort.weatherx.viewmodels.WeatherViewModel
 import com.zehcort.weatherx.views.composables.components.ErrorContent
 import com.zehcort.weatherx.views.composables.components.LoadingIndicator
@@ -31,10 +32,13 @@ fun HomeScreen(
     } else {
         if (errorMessage.isNullOrEmpty()) {
             state.currentWeather?.let { currentWeather ->
-                SuccessContent(
-                    modifier = modifier,
-                    currentWeather = currentWeather
-                )
+                LocationPermissionHandler(
+                    grantedContent = {
+                        SuccessContent(
+                            modifier = modifier,
+                            currentWeather = currentWeather
+                        )
+                    })
             }
         } else {
             ErrorContent(

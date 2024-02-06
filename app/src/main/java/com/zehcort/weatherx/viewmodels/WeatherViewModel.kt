@@ -10,6 +10,7 @@ import com.zehcort.domain.utils.Resource
 import com.zehcort.weatherx.states.ForecastUiState
 import com.zehcort.weatherx.states.HomeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,7 +26,7 @@ class WeatherViewModel @Inject constructor(
     val forecastUiState: State<ForecastUiState> = _forecastUiState
 
     fun fetchCurrentWeather(latitude: Double, longitude: Double) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             getCurrentWeather(latitude = latitude, longitude = longitude).collect { result ->
                 when (result) {
                     is Resource.Error -> _homeUiState.value = homeUiState.value.copy(
@@ -47,7 +48,7 @@ class WeatherViewModel @Inject constructor(
     }
 
     fun fetchForecast(latitude: Double, longitude: Double) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             getForecast(latitude = latitude, longitude = longitude).collect { result ->
                 when (result) {
                     is Resource.Error -> _forecastUiState.value = forecastUiState.value.copy(
