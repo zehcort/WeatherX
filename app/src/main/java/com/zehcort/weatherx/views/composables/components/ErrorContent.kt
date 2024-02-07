@@ -20,7 +20,7 @@ fun ErrorContent(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(vertical = 16.dp),
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {

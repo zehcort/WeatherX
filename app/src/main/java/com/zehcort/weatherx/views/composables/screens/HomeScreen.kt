@@ -151,7 +151,7 @@ private fun SuccessContent(
                         )
 
                         Text(
-                            text = "${stringResource(id = R.string.feels_like_label)} ${currentWeather.feelsLike}${stringResource(id = R.string.temperature_units)}",
+                            text = "${stringResource(id = R.string.feels_like)} ${currentWeather.feelsLike}${stringResource(id = R.string.temperature_units)}",
                             fontSize = 14.sp
                         )
                     }

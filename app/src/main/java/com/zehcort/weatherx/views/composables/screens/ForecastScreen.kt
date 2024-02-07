@@ -36,14 +36,11 @@ fun ForecastScreen(
                 ) {
                     Text(
                         text = forecast.forecastWeatherList[0].temperature.toString(),
-                        fontSize = 20.sp,
                         textAlign = TextAlign.Center
                     )
 
                     Text(
-                        modifier = Modifier.padding(top = 16.dp),
                         text = forecast.forecastWeatherList[0].feelsLike.toString(),
-                        fontSize = 14.sp,
                         textAlign = TextAlign.Center
                     )
                 }
