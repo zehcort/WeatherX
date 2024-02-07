@@ -10,7 +10,11 @@
     <string name="high_label_colon">High:</string>
     <string name="low_label_colon">Low:</string>
     <string name="feels_like">Feels like</string>
+    <string name="humidity">Humidity</string>
+    <string name="cloudiness">Cloudiness</string>
+    <string name="pressure">Pressure</string>
     <string name="request_permission">Request permission</string>
     <string name="rationale_location_permission">Location is important for this app. Please grant the permission</string>
     <string name="required_location_permission">Location permission is required for this app to work. Please grant the permission</string>
+    <string name="current_weather_general_error">There was an error gathering the current weather</string>
 </resources>
