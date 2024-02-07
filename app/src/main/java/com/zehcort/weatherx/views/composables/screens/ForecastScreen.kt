@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,16 +37,14 @@ fun ForecastScreen(
                     Text(
                         text = forecast.forecastWeatherList[0].temperature.toString(),
                         fontSize = 20.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color.White
+                        textAlign = TextAlign.Center
                     )
 
                     Text(
                         modifier = Modifier.padding(top = 16.dp),
                         text = forecast.forecastWeatherList[0].feelsLike.toString(),
                         fontSize = 14.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color.White
+                        textAlign = TextAlign.Center
                     )
                 }
             }

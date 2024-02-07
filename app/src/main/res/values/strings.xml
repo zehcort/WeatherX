@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">WeatherX</string>
-    <string name="today_title">Today</string>
+    <string name="now_title">Now</string>
     <string name="forecast_title">Forecast</string>
+    <string name="empty_content"> </string>
+    <string name="temperature_units">°</string>
+    <string name="pressure_units">hPa</string>
+    <string name="humidity_units">%</string>
+    <string name="cloudiness_units">%</string>
+    <string name="high_label_colon">High:</string>
+    <string name="low_label_colon">Low:</string>
+    <string name="feels_like_label">Feels like</string>
 </resources>

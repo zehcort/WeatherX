@@ -75,7 +75,7 @@ private data class BottomNavigationItem(
 private fun bottomNavigationItems(): List<BottomNavigationItem> {
     return listOf(
         BottomNavigationItem(
-            label = stringResource(id = R.string.today_title),
+            label = stringResource(id = R.string.now_title),
             icon = Icons.Filled.Home,
             route = Route.Home.route
         ),
