@@ -16,5 +16,6 @@
     <string name="request_permission">Request permission</string>
     <string name="rationale_location_permission">Location is important for this app. Please grant the permission</string>
     <string name="required_location_permission">Location permission is required for this app to work. Please grant the permission</string>
-    <string name="current_weather_general_error">There was an error gathering the current weather</string>
+    <string name="current_weather_general_error">There was an error gathering the current weather data</string>
+    <string name="forecast_general_error">There was an error gathering the forecast data</string>
 </resources>

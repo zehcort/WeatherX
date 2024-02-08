@@ -70,7 +70,6 @@ fun HomeScreen(
             errorMessage = errorMessage
         )
     }
-
 }
 
 @Composable
@@ -102,7 +101,7 @@ private fun SuccessContent(
 
     LaunchedEffect(Unit) {
         val location = LocationHelper.getLocation(localContext)
-        onFetchData(location.latitude, location.longitude)
+        if (location.latitude.isNotEmpty() && location.longitude.isNotEmpty()) onFetchData(location.latitude, location.longitude)
     }
 }
 
