@@ -1,12 +1,14 @@
 package com.zehcort.weatherx.views.composables.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -20,7 +22,8 @@ import com.zehcort.weatherx.utils.LocationHelper
 import com.zehcort.weatherx.viewmodels.WeatherViewModel
 import com.zehcort.weatherx.views.composables.components.ErrorContent
 import com.zehcort.weatherx.views.composables.components.LoadingIndicator
-import com.zehcort.weatherx.views.composables.components.forecast.DayForecastItem
+import com.zehcort.weatherx.views.composables.components.common.LocationTopBar
+import com.zehcort.weatherx.views.composables.components.forecast.WeatherForecastPage
 
 @Composable
 fun ForecastScreen(
@@ -64,7 +67,7 @@ private fun SuccessContent(
     val localContext = LocalContext.current
 
     if (forecast != null) {
-        Content(forecast)
+        Content(modifier = modifier, forecast = forecast)
     } else {
         ErrorContent(
             modifier = modifier,
@@ -81,18 +84,34 @@ private fun SuccessContent(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun Content(
-    forecast: Forecast
+    forecast: Forecast,
+    modifier: Modifier = Modifier
 ) {
     val pagerState = rememberPagerState(pageCount = {
         forecast.forecastWeatherList.size
     })
 
-    HorizontalPager(
-        modifier = Modifier
+    Column(
+        modifier = modifier
             .fillMaxSize()
             .padding(horizontal = 12.dp, vertical = 16.dp),
-        state = pagerState
-    ) { page ->
-        DayForecastItem(forecastWeather = forecast.forecastWeatherList[page])
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        LocationTopBar(
+            cityName = forecast.cityName,
+            countryCode = forecast.countryCode,
+            modifier = Modifier
+                .padding(horizontal = 4.dp)
+        )
+
+        HorizontalPager(
+            modifier = Modifier
+                .fillMaxSize(),
+            state = pagerState
+        ) { page ->
+            WeatherForecastPage(forecastWeather = forecast.forecastWeatherList[page])
+        }
     }
+
+
 }

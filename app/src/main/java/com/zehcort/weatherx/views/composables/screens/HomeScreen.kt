@@ -10,10 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Place
-import androidx.compose.material3.Card
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -22,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -37,6 +32,7 @@ import com.zehcort.weatherx.utils.LocationHelper
 import com.zehcort.weatherx.viewmodels.WeatherViewModel
 import com.zehcort.weatherx.views.composables.components.ErrorContent
 import com.zehcort.weatherx.views.composables.components.LoadingIndicator
+import com.zehcort.weatherx.views.composables.components.common.LocationTopBar
 import com.zehcort.weatherx.views.composables.components.home.WeatherConditionCard
 import java.util.Locale
 
@@ -111,24 +107,12 @@ private fun TopContent(
     localContext: Context
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Card(
+        LocationTopBar(
+            cityName = currentWeather.cityName,
+            countryCode = currentWeather.countryCode,
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(horizontal = 4.dp)
-        ) {
-            Row(modifier = Modifier.padding(16.dp)) {
-                Icon(
-                    imageVector = Icons.Default.Place,
-                    contentDescription = stringResource(id = R.string.empty_content),
-                )
-
-                Text(
-                    modifier = Modifier.padding(start = 8.dp),
-                    text = "${currentWeather.cityName}, ${currentWeather.countryCode}",
-                    textAlign = TextAlign.Center
-                )
-            }
-        }
+        )
 
         Column(
             modifier = Modifier

@@ -1,6 +1,8 @@
 package com.zehcort.data.dtos.remote.ow
 
 import com.zehcort.data.datasources.remote.api.ow.Constants
+import com.zehcort.data.utils.toDate
+import com.zehcort.data.utils.toTime
 import com.zehcort.data.entities.remote.ow.Forecast as ForecastEntity
 import com.zehcort.data.entities.remote.ow.ForecastWeather as ForecastWeatherEntity
 import com.zehcort.domain.models.Forecast as ForecastDomain
@@ -26,5 +28,7 @@ private fun ForecastWeatherEntity.toDomain(): ForecastWeatherDomain = ForecastWe
     temperatureKf = main?.tempKf ?: 0F,
     humidity = main?.humidity ?: 0,
     cloudiness = clouds?.all ?: 0,
-    precipitationProbability = pop ?: 0F
+    precipitationProbability = pop ?: 0F,
+    date = dtTxt?.toDate() ?: "",
+    time = dtTxt?.toTime() ?: ""
 )

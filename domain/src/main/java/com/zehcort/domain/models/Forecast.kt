@@ -20,5 +20,7 @@ data class ForecastWeather(
     val temperatureKf: Float,
     val humidity: Int,
     val cloudiness: Int,
-    val precipitationProbability: Float
+    val precipitationProbability: Float,
+    val date: String,
+    val time: String
 )
