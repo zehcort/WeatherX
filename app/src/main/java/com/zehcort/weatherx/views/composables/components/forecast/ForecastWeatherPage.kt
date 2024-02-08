@@ -22,7 +22,7 @@ import com.zehcort.weatherx.R
 import java.util.Locale
 
 @Composable
-fun WeatherForecastPage(
+fun ForecastWeatherPage(
     forecastWeather: ForecastWeather
 ) {
     val localContext = LocalContext.current

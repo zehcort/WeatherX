@@ -23,7 +23,7 @@ import com.zehcort.weatherx.viewmodels.WeatherViewModel
 import com.zehcort.weatherx.views.composables.components.ErrorContent
 import com.zehcort.weatherx.views.composables.components.LoadingIndicator
 import com.zehcort.weatherx.views.composables.components.common.LocationTopBar
-import com.zehcort.weatherx.views.composables.components.forecast.WeatherForecastPage
+import com.zehcort.weatherx.views.composables.components.forecast.ForecastWeatherPage
 
 @Composable
 fun ForecastScreen(
@@ -109,7 +109,7 @@ private fun Content(
                 .fillMaxSize(),
             state = pagerState
         ) { page ->
-            WeatherForecastPage(forecastWeather = forecast.forecastWeatherList[page])
+            ForecastWeatherPage(forecastWeather = forecast.forecastWeatherList[page])
         }
     }
 
