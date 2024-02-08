@@ -7,6 +7,7 @@
     <string name="pressure_units">hPa</string>
     <string name="humidity_units">%</string>
     <string name="cloudiness_units">%</string>
+    <string name="precipitation_probability_units">%</string>
     <string name="high_label_colon">High:</string>
     <string name="low_label_colon">Low:</string>
     <string name="feels_like">Feels like</string>

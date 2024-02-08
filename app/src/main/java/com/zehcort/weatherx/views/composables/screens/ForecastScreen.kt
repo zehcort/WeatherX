@@ -4,7 +4,8 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PageSize
+import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,7 +24,7 @@ import com.zehcort.weatherx.viewmodels.WeatherViewModel
 import com.zehcort.weatherx.views.composables.components.ErrorContent
 import com.zehcort.weatherx.views.composables.components.LoadingIndicator
 import com.zehcort.weatherx.views.composables.components.common.LocationTopBar
-import com.zehcort.weatherx.views.composables.components.forecast.ForecastWeatherPage
+import com.zehcort.weatherx.views.composables.components.forecast.ForecastWeatherCard
 
 @Composable
 fun ForecastScreen(
@@ -94,24 +95,25 @@ private fun Content(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 12.dp, vertical = 16.dp),
+            .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LocationTopBar(
+            modifier = Modifier.padding(vertical = 16.dp),
             cityName = forecast.cityName,
-            countryCode = forecast.countryCode,
-            modifier = Modifier
-                .padding(horizontal = 4.dp)
+            countryCode = forecast.countryCode
         )
 
-        HorizontalPager(
+        VerticalPager(
             modifier = Modifier
                 .fillMaxSize(),
-            state = pagerState
+            state = pagerState,
+            pageSize = PageSize.Fixed(170.dp),
+            pageSpacing = 16.dp
         ) { page ->
-            ForecastWeatherPage(forecastWeather = forecast.forecastWeatherList[page])
+            ForecastWeatherCard(
+                forecastWeather = forecast.forecastWeatherList[page]
+            )
         }
     }
-
-
 }

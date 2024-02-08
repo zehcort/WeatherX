@@ -10,6 +10,7 @@ data class ForecastWeather(
     val weatherCategory: String,
     val weatherDescription: String,
     val icon: String,
+    val rainIcon: String,
     val temperature: Float,
     val feelsLike: Float,
     val tempMin: Float,
@@ -20,7 +21,7 @@ data class ForecastWeather(
     val temperatureKf: Float,
     val humidity: Int,
     val cloudiness: Int,
-    val precipitationProbability: Float,
+    val precipitationProbability: Int,
     val date: String,
     val time: String
 )
