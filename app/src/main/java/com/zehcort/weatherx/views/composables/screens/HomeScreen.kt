@@ -28,6 +28,7 @@ import com.zehcort.domain.models.CurrentWeather
 import com.zehcort.weatherx.R
 import com.zehcort.weatherx.permissions.LocationPermissionHandler
 import com.zehcort.weatherx.states.HomeUiState
+import com.zehcort.weatherx.utils.LocationData
 import com.zehcort.weatherx.utils.LocationHelper
 import com.zehcort.weatherx.viewmodels.WeatherViewModel
 import com.zehcort.weatherx.views.composables.components.ErrorContent
@@ -38,6 +39,7 @@ import java.util.Locale
 
 @Composable
 fun HomeScreen(
+    locationData: LocationData,
     modifier: Modifier = Modifier,
     viewModel: WeatherViewModel = hiltViewModel()
 ) {
@@ -57,7 +59,8 @@ fun HomeScreen(
                             latitude = latitude.toDouble(),
                             longitude = longitude.toDouble()
                         )
-                    }
+                    },
+                    locationData = locationData
                 )
             })
     } else {
@@ -72,6 +75,7 @@ fun HomeScreen(
 private fun SuccessContent(
     state: HomeUiState,
     onFetchData: (latitude: String, longitude: String) -> Unit,
+    locationData: LocationData,
     modifier: Modifier = Modifier
 ) {
     val currentWeather = state.currentWeather
@@ -96,8 +100,13 @@ private fun SuccessContent(
     }
 
     LaunchedEffect(Unit) {
-        val location = LocationHelper.getLocation(localContext)
-        if (location.latitude.isNotEmpty() && location.longitude.isNotEmpty()) onFetchData(location.latitude, location.longitude)
+        if (locationData.latitude.isNotEmpty() && locationData.longitude.isNotEmpty()) {
+            onFetchData(locationData.latitude, locationData.longitude)
+        } else {
+            val location = LocationHelper.getLocation(localContext)
+            if (location.latitude.isNotEmpty() && location.longitude.isNotEmpty()) onFetchData(location.latitude, location.longitude)
+        }
+
     }
 }
 
