@@ -4,16 +4,15 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
+import com.google.common.truth.Truth.assertThat
 import com.zehcort.data.datasources.local.CurrentWeatherDatabase
 import com.zehcort.data.entities.local.CurrentWeather
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 @SmallTest
 class CurrentWeatherDaoTest {
@@ -31,7 +30,7 @@ class CurrentWeatherDaoTest {
     fun closeDb() = database.close()
 
     @Test
-    fun saveRecord() = runBlocking {
+    fun `Given a CurrentWeatherDao, When saving a new record, Then the last record should match with the added one`() = runBlocking {
         val currentWeather = CurrentWeather(
             id = 0,
             weatherCategory = "test_weather_category",
@@ -53,18 +52,18 @@ class CurrentWeatherDaoTest {
         val loaded = database.currentWeatherDao().getLastRecord()
 
         if (loaded != null) {
-            assert(loaded.weatherDescription == currentWeather.weatherDescription)
-            assert(loaded.weatherDescription == currentWeather.weatherDescription)
-            assert(loaded.icon == currentWeather.icon)
-            assert(loaded.temperature == currentWeather.temperature)
-            assert(loaded.feelsLike == currentWeather.feelsLike)
-            assert(loaded.tempMin == currentWeather.tempMin)
-            assert(loaded.tempMax == currentWeather.tempMax)
-            assert(loaded.pressure == currentWeather.pressure)
-            assert(loaded.humidity == currentWeather.humidity)
-            assert(loaded.cloudiness == currentWeather.cloudiness)
-            assert(loaded.countryCode == currentWeather.countryCode)
-            assert(loaded.cityName == currentWeather.cityName)
+            assertThat(loaded.weatherCategory).isEqualTo(currentWeather.weatherCategory)
+            assertThat(loaded.weatherDescription).isEqualTo(currentWeather.weatherDescription)
+            assertThat(loaded.icon).isEqualTo(currentWeather.icon)
+            assertThat(loaded.temperature).isEqualTo(currentWeather.temperature)
+            assertThat(loaded.feelsLike).isEqualTo(currentWeather.feelsLike)
+            assertThat(loaded.tempMin).isEqualTo(currentWeather.tempMin)
+            assertThat(loaded.tempMax).isEqualTo(currentWeather.tempMax)
+            assertThat(loaded.pressure).isEqualTo(currentWeather.pressure)
+            assertThat(loaded.humidity).isEqualTo(currentWeather.humidity)
+            assertThat(loaded.cloudiness).isEqualTo(currentWeather.cloudiness)
+            assertThat(loaded.countryCode).isEqualTo(currentWeather.countryCode)
+            assertThat(loaded.cityName).isEqualTo(currentWeather.cityName)
         }
     }
 }

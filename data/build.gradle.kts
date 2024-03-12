@@ -47,6 +47,7 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
 
     androidTestImplementation("junit:junit:4.13.2")
+    androidTestImplementation("com.google.truth:truth:1.4.2")
     androidTestImplementation("androidx.test:core-ktx:1.5.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test:runner:1.5.2")
