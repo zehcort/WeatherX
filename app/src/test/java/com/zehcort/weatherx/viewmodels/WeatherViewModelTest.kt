@@ -1,5 +1,6 @@
 package com.zehcort.weatherx.viewmodels
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.zehcort.domain.usecases.GetCurrentWeather
 import com.zehcort.domain.usecases.GetForecast
 import io.mockk.mockk
@@ -8,9 +9,14 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.setMain
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 class WeatherViewModelTest {
+    // Executes each task synchronously using Architecture Components.
+    @get:Rule
+    var instantExecutorRule = InstantTaskExecutorRule()
+
     private lateinit var weatherViewModel: WeatherViewModel
     private val dispatcher = StandardTestDispatcher()
 
