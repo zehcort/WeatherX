@@ -5,6 +5,9 @@
       <entry key="CurrentWeatherDaoTest">
         <State />
       </entry>
+      <entry key="Given a CurrentWeatherDao, When saving a new record, Then the last record should match with the added one()">
+        <State />
+      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>

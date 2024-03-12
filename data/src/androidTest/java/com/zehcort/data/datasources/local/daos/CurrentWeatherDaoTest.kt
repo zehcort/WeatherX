@@ -30,7 +30,9 @@ class CurrentWeatherDaoTest {
     fun closeDb() = database.close()
 
     @Test
-    fun `Given a CurrentWeatherDao, When saving a new record, Then the last record should match with the added one`() = runBlocking {
+    fun saveRecordAndGetLastRecord() = runBlocking {
+        // GIVEN - Save a record
+
         val currentWeather = CurrentWeather(
             id = 0,
             weatherCategory = "test_weather_category",
@@ -49,7 +51,11 @@ class CurrentWeatherDaoTest {
 
         database.currentWeatherDao().saveRecord(currentWeather)
 
+        // WHEN - Get the last record from the database
+
         val loaded = database.currentWeatherDao().getLastRecord()
+
+        // THEN - The loaded data contains the expected values
 
         if (loaded != null) {
             assertThat(loaded.weatherCategory).isEqualTo(currentWeather.weatherCategory)
