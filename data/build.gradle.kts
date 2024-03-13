@@ -46,6 +46,9 @@ dependencies {
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
 
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("com.google.truth:truth:1.4.2")
+
     androidTestImplementation("junit:junit:4.13.2")
     androidTestImplementation("com.google.truth:truth:1.4.2")
     androidTestImplementation("androidx.test:core-ktx:1.5.0")
